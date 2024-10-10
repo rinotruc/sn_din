@@ -238,12 +238,12 @@
     </div>
 
     <!-- Close button at the bottom of the album -->
-    <button id="close-album-btn" class="close-btn" onclick="showCake()">bấm dô nút này ik</button>
+    <button id="close-album-btn" class="close-btn" onclick="showCake()">luớt xong ảnh rùi lên đây bấm nút này</button>
 </div>
 
     <!-- Cake and Candle Image Container (Initially Hidden) -->
 <div id="cake-container">
-    <img id="cake" src="https://raw.githubusercontent.com/rinotruc/sn_din/main/cake.jpg" alt="Birthday Cake">
+    <img id="cake" src="https://raw.githubusercontent.com/rinotruc/sn_din/main/cake2.jpg" alt="Birthday Cake">
     <p>Click and hold the candle for 5 seconds to make a wish!</p>
 </div>
     
@@ -259,9 +259,16 @@
 
     // Show cake and instructions after the album is closed
     function showCake() {
-        document.getElementById('albumPopup').style.display = 'none'; // Hide the album
-        document.getElementById('cake-container').style.display = 'block'; // Show the cake
-    }
+    // Hide the album popup
+    document.getElementById('albumPopup').style.display = 'none';
+    
+    // Hide the card (both front and back)
+    document.querySelector('.card').style.display = 'none';
+    
+    // Show the cake container
+    document.getElementById('cake-container').style.display = 'block';
+}
+
 
     // Handle click and hold for the entire cake image
     document.getElementById('cake').addEventListener('mousedown', function() {
