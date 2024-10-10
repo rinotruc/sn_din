@@ -30,11 +30,6 @@
         #cake-container {
             display: none;/* Initially hidden */
             text-align: center;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            
         }
 
         /* Cake image with cursor pointer to show it's clickable */
@@ -363,12 +358,18 @@
 
     // Show fireworks after 5 seconds of holding
     function showFireworks() {
-        document.getElementById('cake-container').style.display = 'none'; // Hide the cake
-        fireworks.start(); // Start the fireworks
-        setTimeout(() => {
-            fireworks.stop(); // Stop fireworks after 5 seconds
-        }, 5000);
-    }
+    console.log("Fireworks triggered");
+
+    // Hide the cake
+    document.getElementById('cake-container').style.display = 'none'; 
+    
+    // Show the fireworks container
+    document.getElementById('fireworks-container').style.display = 'block';
+
+    // Start the fireworks (indefinitely)
+    fireworks.start(); 
+}
+
 </script>
 
 
