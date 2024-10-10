@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Birthday Card</title>
+    <!-- Include the Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         body {
             display: flex;
@@ -13,6 +15,27 @@
             margin: 0;
             background-color: #ffc0cb;
             font-family: Arial, sans-serif;
+        }
+        /* Fireworks container to render the Particles.js fireworks */
+        #fireworks-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
+        /* Cake container where the cake image is shown */
+        #cake-container {
+            display: none; /* Initially hidden */
+            text-align: center;
+        }
+
+        /* Cake image with cursor pointer to show it's clickable */
+        #cake {
+            width: 300px;
+            cursor: pointer;
         }
         .card {
             width: 396px;
@@ -213,11 +236,111 @@
         <p>rùi chốt lại là chúc cưn sinh nhật vui vẻ.</p>
         <p>Live your life, follow your star, and keep your light shining!</p>
     </div>
+
+    <!-- Close button at the bottom of the album -->
+    <button id="close-album-btn" class="close-btn" onclick="showCake()">bấm dô nút này ik</button>
 </div>
+
+    <!-- Cake and Candle Image Container (Initially Hidden) -->
+<div id="cake-container">
+    <img id="cake" src="https://raw.githubusercontent.com/rinotruc/sn_din/main/cake.jpg" alt="Birthday Cake">
+    <p>Click and hold the candle for 5 seconds to make a wish!</p>
+</div>
+    
     <!-- Background Music -->
 <audio id="background-music" loop>
     <source src="https://raw.githubusercontent.com/rinotruc/sn_din/main/Happy%20Birthday%20(Piano%20Version).mp3" type="audio/mpeg">
 </audio>
+    <!-- Fireworks Container (Particles.js will render fireworks here) -->
+<div id="fireworks-container"></div>
+
+<script>
+    let holdTimer;
+
+    // Show cake and instructions after the album is closed
+    function showCake() {
+        document.getElementById('albumPopup').style.display = 'none'; // Hide the album
+        document.getElementById('cake-container').style.display = 'block'; // Show the cake
+    }
+
+    // Handle click and hold for the entire cake image
+    document.getElementById('cake').addEventListener('mousedown', function() {
+        holdTimer = setTimeout(showFireworks, 5000); // Start the timer for 5 seconds
+    });
+
+    document.getElementById('cake').addEventListener('mouseup', function() {
+        clearTimeout(holdTimer); // Clear the timer if the user releases before 5 seconds
+    });
+
+    document.getElementById('cake').addEventListener('mouseleave', function() {
+        clearTimeout(holdTimer); // Clear the timer if the user moves the mouse away from the image
+    });
+
+    // For mobile (touch devices)
+    document.getElementById('cake').addEventListener('touchstart', function() {
+        holdTimer = setTimeout(showFireworks, 5000); // Start the timer for 5 seconds
+    });
+
+    document.getElementById('cake').addEventListener('touchend', function() {
+        clearTimeout(holdTimer); // Clear the timer if the user releases before 5 seconds
+    });
+
+    document.getElementById('cake').addEventListener('touchcancel', function() {
+        clearTimeout(holdTimer); // Clear the timer if the touch is cancelled
+    });
+
+    // Show fireworks after 5 seconds of holding
+    function showFireworks() {
+        document.getElementById('cake-container').style.display = 'none'; // Hide the cake
+        document.getElementById('fireworks-container').style.display = 'block'; // Show fireworks container
+
+        // Initialize Particles.js for fireworks effect
+        particlesJS('fireworks-container', {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": ["#ff0000", "#ffff00", "#00ff00", "#0000ff"] // Red, Yellow, Green, Blue colors
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 1,
+                    "random": true
+                },
+                "size": {
+                    "value": 10,
+                    "random": true
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 10,
+                    "direction": "none",
+                    "random": true,
+                    "out_mode": "out"
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": false
+                    },
+                    "onclick": {
+                        "enable": false
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    }
+</script>
 
 
 <script>
