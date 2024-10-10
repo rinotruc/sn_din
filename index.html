@@ -35,7 +35,18 @@
         /* Cake image with cursor pointer to show it's clickable */
         #cake {
             width: 300px;
+            height: 300px;
+            background-image: url('https://raw.githubusercontent.com/rinotruc/sn_din/main/cake.jpg');
+            background-size: cover;
+            background-position: center;
             cursor: pointer;
+        }
+        /* Prevent copy, selection, and tap highlight */
+        #cake, p, button, div {
+            -webkit-touch-callout: none; /* Disable iOS context menu */
+            -webkit-user-select: none; /* Disable text selection */
+            -webkit-tap-highlight-color: transparent; /* Disable highlight on tap */
+            user-select: none; /* Disable selection for other browsers */
         }
         .card {
             width: 396px;
@@ -243,9 +254,11 @@
 
     <!-- Cake and Candle Image Container (Initially Hidden) -->
 <div id="cake-container">
-    <button id="cake-btn" style="background: url('https://raw.githubusercontent.com/rinotruc/sn_din/main/cake2.jpg') no-repeat center; background-size: cover; width: 300px; height: 300px; border: none; cursor: pointer;"></button>
-    <p>Click and hold the candle for 5 seconds to make a wish!</p>
+    <div id="cake" style="width: 300px; height: 300px; background-image: url('https://raw.githubusercontent.com/rinotruc/sn_din/main/cake.jpg'); background-size: cover; background-position: center; cursor: pointer;">
+        <p>Click and hold the candle for 5 seconds to make a wish!</p>
+    </div>
 </div>
+
 
       <!-- Background Music -->
 <audio id="background-music" loop>
