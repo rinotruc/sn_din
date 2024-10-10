@@ -225,10 +225,12 @@
     function showAlbum(event) {
         event.stopPropagation();
         document.getElementById('albumPopup').style.display = 'block';
+        document.body.style.overflow = 'hidden';
     }
 
     function closeAlbum() {
         document.getElementById('albumPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
     
 </script>
