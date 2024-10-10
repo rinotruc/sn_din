@@ -78,7 +78,7 @@
             transform: translate(-50%, -50%);
             width: 90%;
             height: 90%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(173, 216, 230, 0.9);
             padding: 20px;
             overflow-y: scroll;
             border-radius: 10px;
@@ -211,25 +211,19 @@
     </div>
 </div>
     <!-- Background Music -->
-<audio id="background-music" autoplay loop muted>
+<audio id="background-music" loop>
     <source src="https://raw.githubusercontent.com/rinotruc/sn_din/main/Happy%20Birthday%20(Piano%20Version).mp3" type="audio/mpeg">
 </audio>
-<script>
-function toggleMusic() {
-    var music = document.getElementById("background-music");
-    if (music.paused) {
-        music.play();
-        document.getElementById("music-control").textContent = "Pause Music 🎶";
-    } else {
-        music.pause();
-        document.getElementById("music-control").textContent = "Play Music 🎶";
-    }
-}
-</script>
+
 
 <script>
     function openCard() {
         document.getElementById('card').classList.toggle('open');
+        // Play the background music after user interaction (card click)
+        var music = document.getElementById("background-music");
+        if (music.paused) {
+            music.play();
+        }
     }
 
     function showAlbum(event) {
