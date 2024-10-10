@@ -30,7 +30,7 @@
         #cake-container {
             display: none;/* Initially hidden */
             text-align: center;
-            width: 100%
+            width: 100%;
             align-items: center;
             justify-content: center;
             margin: 0 auto;
@@ -322,6 +322,14 @@
             }
         }
     });
+    // Show Cake function (this is the missing part)
+    function showCake() {
+        // Hide the album popup
+        document.getElementById('albumPopup').style.display = 'none';
+
+        // Show the cake container
+        document.getElementById('cake-container').style.display = 'block';
+    }
 
     // Handle click and hold for the entire cake image
     document.getElementById('cake').addEventListener('mousedown', function() {
