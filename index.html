@@ -261,7 +261,7 @@
     <!-- Cake and Candle Image Container (Initially Hidden) -->
 <!-- Cake and Candle Image Container (Initially Hidden) -->
 <div id="cake-container">
-    <div id="cake" style="width: 300px; height: 300px; background-image: url('https://raw.githubusercontent.com/rinotruc/sn_din/main/cake.jpg'); background-size: cover; background-position: center; cursor: pointer;">
+    <div id="cake" style="width: 300px; height: 300px; background-image: url('https://raw.githubusercontent.com/rinotruc/sn_din/main/cake2.jpg'); background-size: cover; background-position: center; cursor: pointer;">
         <p>Click and hold the candle for 5 seconds to make a wish!</p>
     </div>
 </div>
@@ -323,13 +323,17 @@
         }
     });
     // Show Cake function (this is the missing part)
-    function showCake() {
-        // Hide the album popup
-        document.getElementById('albumPopup').style.display = 'none';
+   function showCake() {
+    // Hide the album popup
+    document.getElementById('albumPopup').style.display = 'none';
 
-        // Show the cake container
-        document.getElementById('cake-container').style.display = 'block';
-    }
+    // Hide the card (inside and outside)
+    document.querySelector('.card').style.display = 'none';
+
+    // Show the cake container
+    document.getElementById('cake-container').style.display = 'block';
+}
+
 
     // Handle click and hold for the entire cake image
     document.getElementById('cake').addEventListener('mousedown', function() {
